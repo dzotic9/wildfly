@@ -33,7 +33,7 @@ onBeforeServiceScaleOut[cp]:
       migrate: true
 
 onAfterServiceScaleOut[cp]:
-  - if (!nodes.ctrl && nodes.cp.length > 1):
+  - if (nodes.cp.length > 1):
     - cmd[cp]: sudo service wildfly restart
     - forEach(wnode:nodes.cp):
         updateLink2CtrlConsole:
